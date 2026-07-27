@@ -3,69 +3,70 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Flask](https://img.shields.io/badge/Flask-Backend-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![Vision Transformer](https://img.shields.io/badge/ViT-95.19%25%20Accuracy-00599C?style=for-the-badge&logo=python&logoColor=white)](https://github.com/google-research/vision_transformer)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-**MediScan AI** is an advanced healthcare assistant and diagnostic visualization platform powered by Deep Learning. It combines a **Vision Transformer (ViT)** neural network for automated **Brain MRI Scan Classification** with a comprehensive suite of interactive health tools: **Symptom Checker**, **Medication Directory**, **Emergency First Aid Protocols**, and **Health & Wellness Recommendations**.
+**MediScan AI** is an advanced medical diagnostic assistant and healthcare application powered by Deep Learning. It integrates a **Vision Transformer (ViT)** neural network for automated **Brain MRI Scan Classification** with an interactive suite of healthcare tools: **Symptom Diagnostics**, **Medication Search**, **Emergency First Aid Guides**, and **Health & Wellness Advice**.
 
 ---
 
 ## 🌟 Key Features
 
 ### 🧠 1. Brain MRI AI Classifier (Vision Transformer)
-- **High-Accuracy Deep Learning Model**: Fine-tuned PyTorch ViT (`vit_tiny_patch16_224` & custom Multi-Head Self-Attention ViT architecture) trained on brain MRI scans.
-- **4-Class Diagnostic Categories**:
-  - 🔴 **Glioma Tumor**
-  - 🟠 **Meningioma Tumor**
-  - 🟢 **No Tumor Detected** (Healthy brain tissue)
-  - 🟣 **Pituitary Tumor**
-- **High Performance Benchmark**: Achieves **95.19% Validation Accuracy**.
-- **Interactive ROI Heatmap**: Canvas-based heatmap visualizer highlighting Region of Interest (ROI) regions on uploaded brain scan slices.
-- **Flexible Image Upload**: Supports PNG, JPG, and export formats with pre-loaded sample MRI scans for instant browser testing.
+- **High-Accuracy Deep Learning Model**: Fine-tuned PyTorch Vision Transformer (`vit_tiny_patch16_224` & custom Multi-Head Self-Attention ViT architecture) trained on brain MRI scans.
+- **4 Diagnostic Categories**:
+  - 🔴 **Glioma Tumor** — Tumors arising from glial cells in the brain and spinal cord.
+  - 🟠 **Meningioma Tumor** — Tumors forming on the membranes surrounding the brain and spinal cord.
+  - 🟢 **No Tumor Detected** — Healthy brain tissue scans showing no signs of abnormal growth.
+  - 🟣 **Pituitary Tumor** — Abnormal growths in the pituitary gland at the base of the brain.
+- **Benchmark Performance**: Achieves **95.19% Validation Accuracy** on test scans.
+- **Interactive Heatmap Visualizer**: Canvas-based Region of Interest (ROI) heatmap overlay on uploaded MRI slices to highlight diagnostic focus regions.
+- **Flexible Image Input**: Accepts PNG, JPG, JPEG formats, base64 payloads, and pre-loaded sample MRI scans for instant browser testing.
 
 ### 🩺 2. Interactive Symptom Checker
-- Guided, multi-step symptom diagnostic wizard.
-- Calculates likelihood scores matching user symptoms against verified clinical condition profiles.
-- Displays triage urgency levels: **Immediate Care**, **Urgent Care**, **Routine Consultation**, and **Self-Care**.
+- Guided multi-step diagnostic wizard asking targeted clinical questions.
+- Calculates likelihood scores matching user symptoms against verified condition profiles (`data/symptoms.json`).
+- Displays triage urgency ratings: **Immediate Care**, **Urgent Care**, **Routine Consultation**, and **Self-Care**.
 
 ### 💊 3. Medication Directory & Search
-- Searchable clinical drug database (`data/medications.json`).
-- Detailed medication cards containing indications, standard dosage guidelines, contraindications, and potential side effects.
+- Searchable drug database (`data/medications.json`) filterable by name, condition, or category.
+- Detailed medication cards containing indications, standard dosage guidelines, contraindications, and side effects.
 
 ### 🚑 4. Emergency First Aid Guides
-- Actionable, step-by-step emergency response protocols (`data/first-aid.json`).
-- Clear guidelines for emergency scenarios: CPR, Choking, Severe Bleeding, Burns, Fractures, Poisoning, and Heatstroke.
+- Actionable step-by-step emergency response protocols (`data/first-aid.json`).
+- Clear visual instructions for critical scenarios: CPR, Choking, Severe Bleeding, Burns, Fractures, Poisoning, and Heatstroke.
 
 ### 💡 5. Health & Wellness Engine
-- Evidence-based preventive healthcare advice categorized into Nutrition, Physical Fitness, Mental Health, Sleep Hygiene, and Cardiovascular Health (`data/health-tips.json`).
+- Preventive healthcare advice categorized into Nutrition, Physical Fitness, Mental Health, Sleep Hygiene, and Cardiovascular Health (`data/health-tips.json`).
 
 ---
 
 ## 🏗 Architecture & Tech Stack
 
 ```
-                                ┌─────────────────────────────────────────┐
-                                │             MediScan AI Web             │
-                                │        (Vanilla HTML5 / CSS3 / JS)      │
-                                └────────────────────┬────────────────────┘
-                                                     │
-                                       HTTP / REST API (JSON / FormData)
-                                                     │
-                                                     ▼
  ┌────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │                                       Flask Python Backend                                         │
- │                                           (server.py)                                              │
+ │                                           MediScan AI Web                                          │
+ │                                      (Vanilla HTML5 / CSS3 / JS)                                   │
+ └──────────────────────────────────────────────────┬─────────────────────────────────────────────────┘
+                                                    │
+                                      HTTP / REST API (JSON / FormData)
+                                                    │
+                                                    ▼
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │                                      Flask Python Web Backend                                      │
+ │                                            (server.py)                                             │
  └──────────────────────────────────────────────────┬─────────────────────────────────────────────────┘
                                                     │
                                                     ▼
  ┌────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │                                   Vision Transformer Engine                                       │
- │                      (best_vit_brain_mri.pth | PyTorch CUDA / CPU Acceleration)                    │
+ │                                  Vision Transformer (ViT) Engine                                  │
+ │                     (best_vit_brain_mri.pth | PyTorch CUDA / CPU Acceleration)                     │
  └────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 | Layer | Technologies & Frameworks |
 | :--- | :--- |
-| **Frontend UI** | HTML5, Modern Vanilla CSS3 (Design Tokens, Glassmorphism, CSS Grid/Flexbox), ES6+ JavaScript |
+| **Frontend UI** | HTML5, Vanilla CSS3 (Design Tokens, Glassmorphism, CSS Grid/Flexbox), Vanilla ES6+ JavaScript |
 | **Backend API** | Python 3.10+, Flask, Flask-CORS |
 | **Deep Learning** | PyTorch, `timm` (PyTorch Image Models), Torchvision, Pillow |
 | **Model Architecture** | Vision Transformer (`vit_tiny_patch16_224` / Custom Patch Embedding + Multi-Head Self-Attention) |
@@ -76,17 +77,17 @@
 ## 📁 Repository Structure
 
 ```
-CrickEye_Project/
+MediScan-AI/
 ├── best_vit_brain_mri.pth   # Pre-trained ViT Model Checkpoint (95.19% Val Accuracy)
 ├── train_vit.py             # ViT Training & Data Augmentation Pipeline
 ├── vit_model.py             # Custom ViT Architecture (PatchEmbedding, MHSA, TransformerBlock)
 ├── server.py                # Flask REST API Backend & Static Web Server
-├── index.html               # Main SPA Web Application Interface
+├── index.html               # Main Web Application Interface
 ├── css/
 │   ├── animations.css       # Keyframe animations & UI state transitions
-│   ├── components.css       # UI Components (Cards, Badges, Modals, Buttons)
+│   ├── components.css       # Shared UI components (Cards, Badges, Modals, Buttons)
 │   ├── index.css            # Base styles, CSS Variables, Typography & Reset
-│   └── pages.css            # Section-specific views (Analyzer, Symptom Checker, etc.)
+│   └── pages.css            # Section-specific styles (Analyzer, Symptom Checker, etc.)
 ├── js/
 │   ├── app.js               # Application Router & Navigation Controller
 │   ├── image-analyzer.js    # MRI Upload Handler, API Communication & Heatmap Overlay
@@ -96,6 +97,8 @@ CrickEye_Project/
 │   ├── health-tips.js       # Health & Wellness Content Controller
 │   └── utils.js             # Shared DOM Utilities & Toast Notification Helpers
 └── data/
+    ├── Training/            # MRI Dataset Training Images (glioma, meningioma, notumor, pituitary)
+    ├── Testing/             # MRI Dataset Testing Images (glioma, meningioma, notumor, pituitary)
     ├── first-aid.json       # Emergency First Aid Protocols Dataset
     ├── health-tips.json     # Wellness & Preventive Tips Dataset
     ├── medications.json     # Clinical Medication Information Dataset
@@ -108,17 +111,17 @@ CrickEye_Project/
 
 ### 1. Prerequisites
 - **Python 3.10+** (Python 3.11 recommended)
-- **NVIDIA GPU with CUDA** (Optional, falls back automatically to CPU)
+- **NVIDIA GPU with CUDA** (Optional, automatically falls back to CPU if unavailable)
 
 ### 2. Install Dependencies
-Clone the repository and install required packages:
+Clone the repository and install the required dependencies:
 
 ```bash
 # Clone repository
 git clone https://github.com/your-username/MediScan-AI.git
 cd MediScan-AI
 
-# Install required dependencies
+# Install Python packages
 pip install torch torchvision timm flask flask-cors pillow
 ```
 
@@ -129,7 +132,7 @@ Start `server.py` to run the Flask API and load the ViT model checkpoint:
 python server.py
 ```
 
-Expected output:
+Expected terminal output:
 ```text
 Loading trained ViT model from 'best_vit_brain_mri.pth' on cuda...
 ViT Model successfully loaded! Best Val Accuracy: 95.19%
@@ -137,7 +140,7 @@ Starting MediScan AI PyTorch ViT Backend on http://localhost:5000
 ```
 
 ### 4. Open in Browser
-Open your browser and go to:
+Open your browser and navigate to:
 👉 **`http://localhost:5000`**
 
 ---
@@ -145,7 +148,7 @@ Open your browser and go to:
 ## 📡 REST API Reference
 
 ### 1. Backend Status (`GET /api/status`)
-Checks server availability and model details.
+Checks backend health and loaded model metadata.
 
 **Response Example:**
 ```json
@@ -160,9 +163,9 @@ Checks server availability and model details.
 ```
 
 ### 2. Brain MRI Classification (`POST /api/predict`)
-Classifies an uploaded MRI image. Accepts `multipart/form-data` with key `image` or JSON with base64 payload.
+Classifies an uploaded Brain MRI scan image. Accepts `multipart/form-data` with key `image` or JSON with base64 encoded image string.
 
-**Example Request:**
+**Example Request (curl):**
 ```bash
 curl -X POST -F "image=@sample_brain_mri.jpg" http://localhost:5000/api/predict
 ```
@@ -216,20 +219,30 @@ data/
 python train_vit.py --data_dir ./data --epochs 30 --batch_size 16 --lr 1e-4 --use_timm
 ```
 
-**Training Parameters:**
-- `--data_dir`: Root dataset path (default: `./data`)
-- `--epochs`: Total training epochs (default: `30`)
-- `--batch_size`: Batch size per step (default: `16`)
-- `--lr`: Learning rate (default: `0.0001`)
-- `--use_timm`: Flag to build via `timm.create_model('vit_tiny_patch16_224')` or custom ViT architecture
+**Training Flags:**
+- `--data_dir`: Path to root dataset directory (default: `./data`)
+- `--epochs`: Number of training epochs (default: `30`)
+- `--batch_size`: Batch size per iteration (default: `16`)
+- `--lr`: Initial learning rate for AdamW optimizer (default: `0.0001`)
+- `--use_timm`: Flag to build model using `timm.create_model('vit_tiny_patch16_224')` or custom ViT architecture
 
-The trained model checkpoint will automatically be saved to `best_vit_brain_mri.pth`.
+The checkpoint with the highest validation accuracy is saved automatically to `best_vit_brain_mri.pth`.
+
+---
+
+## 🔧 Troubleshooting
+
+| Issue | Cause | Solution |
+| :--- | :--- | :--- |
+| **Model Checkpoint Missing** | `best_vit_brain_mri.pth` not found in working directory | Ensure `best_vit_brain_mri.pth` is in root folder or train a model with `python train_vit.py`. |
+| **Port 5000 in Use** | Another service is using port 5000 | Set environment variable `PORT=5001 python server.py` to change port. |
+| **CUDA Out of Memory** | Large batch size during training | Lower batch size using `--batch_size 8` or run on CPU with `CUDA_VISIBLE_DEVICES=""`. |
 
 ---
 
 ## ⚠️ Medical Disclaimer
 
-> **IMPORTANT**: **MediScan AI** is strictly an educational and research project. It is **NOT** a clinical diagnostic tool or medical device and does **NOT** provide medical diagnoses or professional healthcare advice. Always consult a licensed healthcare professional for any medical evaluation or diagnosis.
+> **IMPORTANT**: **MediScan AI** is strictly an educational and research demonstration tool. It is **NOT** a clinical diagnostic device and does **NOT** provide medical advice or diagnoses. Always consult a qualified medical professional for any healthcare evaluations or medical decisions.
 
 ---
 
