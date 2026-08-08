@@ -17,12 +17,12 @@ export class ImageAnalyzer {
       { id: 'pituitary', name: 'Pituitary Tumor', color: '#8b5cf6', desc: 'An abnormal growth in the pituitary gland, located at the base of the brain.' }
     ];
 
-    // Sample dataset paths from local archive
+    // Sample dataset paths
     this.sampleImages = [
-      { name: 'Glioma Sample', path: './archive (3)/Testing/glioma/Te-gl_1.jpg', targetClass: 'glioma' },
-      { name: 'Meningioma Sample', path: './archive (3)/Testing/meningioma/Te-me_1.jpg', targetClass: 'meningioma' },
-      { name: 'No Tumor Sample', path: './archive (3)/Testing/notumor/Te-no_1.jpg', targetClass: 'notumor' },
-      { name: 'Pituitary Sample', path: './archive (3)/Testing/pituitary/Te-pi_1.jpg', targetClass: 'pituitary' }
+      { name: 'Glioma Sample', path: './data/Testing/glioma/Te-gl_1.jpg', targetClass: 'glioma' },
+      { name: 'Meningioma Sample', path: './data/Testing/meningioma/Te-me_1.jpg', targetClass: 'meningioma' },
+      { name: 'No Tumor Sample', path: './data/Testing/notumor/Te-no_1.jpg', targetClass: 'notumor' },
+      { name: 'Pituitary Sample', path: './data/Testing/pituitary/Te-pi_1.jpg', targetClass: 'pituitary' }
     ];
     this.useBackendApi = false;
     this.apiBaseUrl = 'http://localhost:5000';

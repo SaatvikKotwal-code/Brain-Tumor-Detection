@@ -47,15 +47,16 @@ class App {
     // Hash change handler
     window.addEventListener('hashchange', () => this.handleRoute());
 
-    // Nav links click
-    $$('.nav-link, [data-navigate]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        const targetView = el.dataset.navigate || el.getAttribute('href')?.replace('#', '');
+    // Delegate click for all nav links & data-navigate buttons
+    document.addEventListener('click', (e) => {
+      const navEl = e.target.closest('.nav-link, [data-navigate]');
+      if (navEl) {
+        const targetView = navEl.dataset.navigate || navEl.getAttribute('href')?.replace('#', '');
         if (targetView) {
           e.preventDefault();
           window.location.hash = targetView;
         }
-      });
+      }
     });
   }
 
@@ -94,8 +95,14 @@ class App {
   }
 }
 
-// Instantiate and initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+// Instantiate and initialize app reliably
+const startApp = () => {
   const app = new App();
   app.init();
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startApp);
+} else {
+  startApp();
+}
