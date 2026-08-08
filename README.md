@@ -1,10 +1,13 @@
 # 🩺 MediScan AI — Medical AI Assistant & Brain MRI Classifier
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-GitHub_Pages-blue?style=for-the-badge&logo=github)](https://saatvikkotwal-code.github.io/Brain-Tumor-Detection/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Flask](https://img.shields.io/badge/Flask-Backend-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![Vision Transformer](https://img.shields.io/badge/ViT-95.19%25%20Accuracy-00599C?style=for-the-badge&logo=python&logoColor=white)](https://github.com/google-research/vision_transformer)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+
+🔗 **Live Web App Demo**: [https://saatvikkotwal-code.github.io/Brain-Tumor-Detection/](https://saatvikkotwal-code.github.io/Brain-Tumor-Detection/)
 
 **MediScan AI** is an advanced medical diagnostic assistant and healthcare application powered by Deep Learning. It integrates a **Vision Transformer (ViT)** neural network for automated **Brain MRI Scan Classification** with an interactive suite of healthcare tools: **Symptom Diagnostics**, **Medication Search**, **Emergency First Aid Guides**, and **Health & Wellness Advice**.
 
@@ -118,8 +121,8 @@ Clone the repository and install the required dependencies:
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/MediScan-AI.git
-cd MediScan-AI
+git clone https://github.com/SaatvikKotwal-code/Brain-Tumor-Detection.git
+cd Brain-Tumor-Detection
 
 # Install Python packages
 pip install torch torchvision timm flask flask-cors pillow
